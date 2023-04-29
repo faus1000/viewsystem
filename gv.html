@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta
-        name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- <script src="main.js"></script> -->
-        <title>Groups View System - EO V100</title>
-        <link rel="icon" type="image/x-icon" href="./images/favicon.png">
-        <style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="main.js"></script> -->
+    <title>Groups View System - EO V100</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <style>
         /* width */
         ::-webkit-scrollbar {
             width: 10px;
@@ -22,14 +19,15 @@
 
         /* Handle */
         ::-webkit-scrollbar-thumb {
-            background: rgba(131 , 145 , 155, 0.54);
+            background: rgba(131, 145, 155, 0.54);
             border-radius: 10px;
         }
 
         /* Handle on hover */
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(131 , 145 , 155, 0.54);
+            background: rgba(131, 145, 155, 0.54);
         }
+
         body {
             /* background-color: #a1d2ff;*/
             background-color: #020d1c;
@@ -37,13 +35,13 @@
             overflow-y: auto;
             overflow-x: hidden;
         }
+
         /*body:hover {
             overflow-y: scroll;
             overflow-x: hidden;
         }*/
         #container {
-            display: flex; 
-            margin-left: 8px;
+            display: flex;
             flex-wrap: wrap;
         }
 
@@ -60,9 +58,10 @@
             font-size: 20px;
             font-family: sans-serif;
             font-weight: bold;
-            border-bottom:  1px solid rgba(82, 229, 255, 0.575);
+            border-bottom: 1px solid rgba(82, 229, 255, 0.575);
         }
-       /* .etext {
+
+        /* .etext {
             color: #4fab4f;
             padding: 0;
             font-size: 6px;
@@ -71,12 +70,12 @@
         }*/
         .ogroup {
             width: auto;
-            height: 18px; 
-             /*background-color:rgb(14, 172, 219); */
+            height: 18px;
+            /*background-color:rgb(14, 172, 219); */
             display: flex;
             justify-content: center;
             align-items: center;
-            border-bottom:  1px solid rgba(82, 229, 255, 0.575);
+            border-bottom: 1px solid rgba(82, 229, 255, 0.575);
             /*color: #f55959;*/
             padding: 20px 0px 5px 0px;
             margin: 0px 0px 1px 0px;
@@ -84,6 +83,7 @@
             font-family: sans-serif;
             font-weight: bold;
         }
+
         /*.otext {
             color: #f34a4a;
             padding: 0;
@@ -98,6 +98,7 @@
             font-family: sans-serif;
             font-weight: bold;
         }
+
         .onum1 {
             color: #f34a4a;
             padding: 0;
@@ -115,8 +116,8 @@
                                                
                                             </div> -->
     <div id="container">
-      <div class="egroup"></div>
-        <div class="ogroup"></div> 
+        <div class="egroup"></div>
+        <div class="ogroup"></div>
     </div>
 
     <!-- structura interna -->
@@ -127,7 +128,7 @@
                     <div class="ogroup">
                         <span class="otext">3o</span>
                     </div>-->
-                
+
 
     <script>
 
@@ -152,7 +153,7 @@
         var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089');
 
         ws.onopen = function (evt) {
-            ws.send(JSON.stringify({ticks: symbol}));
+            ws.send(JSON.stringify({ ticks: symbol }));
         };
 
         var addOGroup = false;
@@ -163,12 +164,7 @@
 
             var digit = Number(data.tick.quote).toFixed(decimals).slice(-1);
             var isScrolledToBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
-            if (isScrolledToBottom) {
-                //  out.scrollLeft = out.scrollWidth - out.clientWidth; 
-                out.scrollTop = out.scrollHeight + out.clientHeight;
-              } else {
-  
-              }
+
 
             if (digit % 2 === 0) {
                 var text = "O";
@@ -232,12 +228,12 @@
 
                 var eGroup = document.createElement("div");
                 //var Etext = document.createElement("span");
-               // Etext.setAttribute("class", "etext");
+                // Etext.setAttribute("class", "etext");
                 //Etext.appendChild(edigitText);
 
 
                 eGroup.setAttribute('class', 'egroup');
-               // eGroup.appendChild(Etext);
+                // eGroup.appendChild(Etext);
                 eGroup.appendChild(senum1);
 
                 var container = document.getElementById("container");
@@ -247,20 +243,20 @@
             }
 
             function AñadirDigitsE(digito, Ec) {
- 
-               var counterItem = document.getElementsByClassName("egroup"); 
-               
-              //counterItem[counterItem.length - 1].innerHTML =  Ec +"e";
-              counterItem[counterItem.length - 1].style.color = "#0bc722"; 
-              counterItem[counterItem.length - 1].style.backgroundColor = "#3dfaff3d"; 
-              counterItem[counterItem.length - 1].innerHTML =  Ec; 
-              
-               
+
+                var counterItem = document.getElementsByClassName("egroup");
+
+                //counterItem[counterItem.length - 1].innerHTML =  Ec +"e";
+                counterItem[counterItem.length - 1].style.color = "#0bc722";
+                counterItem[counterItem.length - 1].style.backgroundColor = "#3dfaff3d";
+                counterItem[counterItem.length - 1].innerHTML = Ec;
+
+
 
             }
 
             function AñadirGruposO(digito, Oc,) { // var odigitText = document.createTextNode(Oc);
-              //  var odigitText = document.createTextNode("🔴");
+                //  var odigitText = document.createTextNode("🔴");
 
                 var sonum1 = document.createElement("span");
                 var onum1 = document.createTextNode(Oc);
@@ -283,21 +279,30 @@
 
             }
 
-            function AñadirDigitsO(digito, Oc) { 
+            function AñadirDigitsO(digito, Oc) {
                 var counterItem = document.getElementsByClassName("ogroup");
-   
-               //counterItem[counterItem.length - 1].innerHTML = Oc +"o";  
-                counterItem[counterItem.length - 1].style.color = "#0bc722";   
-               counterItem[counterItem.length - 1].style.backgroundColor = "#3dfaff3d"; 
 
-               counterItem[counterItem.length - 1].innerHTML = Oc;  
-                
+                //counterItem[counterItem.length - 1].innerHTML = Oc +"o";  
+                counterItem[counterItem.length - 1].style.color = "#0bc722";
+                counterItem[counterItem.length - 1].style.backgroundColor = "#3dfaff3d";
+
+                counterItem[counterItem.length - 1].innerHTML = Oc;
+
             }
 
-           
+            if (isScrolledToBottom) {
+                //  out.scrollLeft = out.scrollWidth - out.clientWidth; 
+                out.scrollTop = out.scrollHeight + out.clientHeight;
+            } else {
+
+            }
+
 
 
         }
+
     </script>
 
-</body></html>
+</body>
+
+</html>
