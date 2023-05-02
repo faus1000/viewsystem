@@ -3,7 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="main.js"></script> -->
-    <title>GVS Linear - EO V100</title>
+    <title>Groups View System - EO V100</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <style>
         /* width */
@@ -14,8 +14,8 @@
         /* Track */
         ::-webkit-scrollbar-track {
             box-shadow: transparent;
-            border-radius: 0px;
             background: #020d1c;
+            border-radius: 0px;
         }
 
         /* Handle */
@@ -47,44 +47,56 @@
         }
 
         .egroup {
-          /* background-color: rgba(0, 128, 0, 0.35);*/
-          background-color: rgba(219, 41, 41, 0.31);
-            color: #77ff88;
-            font-size: 20px;
-            width: 26px;
-            height: 26px;
-            border-radius: 4px 4px 0px 0px;
+            width: auto;
+            height: 18px;
+            margin: 0px 0px 10px 0px;
+            /*  background-color: rgb(14, 172, 219); */
             display: flex;
             justify-content: center;
-            justify-items: center;
             align-items: center;
-            /*margin: 0px 0px 4px 0px;*/ 
-            font-weight: bold;
-            border-bottom: 1px solid rgba(82, 229, 255, 0.24);
-        }
- 
-        .ogroup {
-            background-color: rgba(219, 41, 41, 0.31);
-            color: #ff8080; 
-            width: 26px;
+            /*color: #46d16a;*/
+            padding: 0px 0px 25px 0px;
             font-size: 20px;
-            height: 26px;
-            border-radius: 4px 4px 0px 0px;
-            display: flex;
-            justify-content: center;
-            justify-items: center;
-            align-items: center;
-            /*margin: 0px 0px 4px 0px;*/
+            font-family: sans-serif;
             font-weight: bold;
-            border-bottom: 1px solid rgba(82, 229, 255, 0.24);
+            border-bottom: 1px solid rgba(82, 229, 255, 0.575);
         }
 
-        
+        /* .etext {
+            color: #4fab4f;
+            padding: 0;
+            font-size: 6px;
+            font-family: sans-serif;
+            font-weight: lighter;
+        }*/
+        .ogroup {
+            width: auto;
+            height: 18px;
+            /*background-color:rgb(14, 172, 219); */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid rgba(82, 229, 255, 0.575);
+            /*color: #f55959;*/
+            padding: 20px 0px 5px 0px;
+            margin: 0px 0px 1px 0px;
+            font-size: 20px;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        /*.otext {
+            color: #f34a4a;
+            padding: 0;
+            font-size: 6px;
+            font-family: sans-serif;
+            font-weight: lighter;
+        }*/
         .enum1 {
             color: #f34a4a;
             padding: 0;
             font-size: 20px;
-            /*font-family: sans-serif;*/
+            font-family: sans-serif;
             font-weight: bold;
         }
 
@@ -92,10 +104,10 @@
             color: #f34a4a;
             padding: 0;
             font-size: 20px;
-           /* font-family: sans-serif;*/
+            font-family: sans-serif;
             font-weight: bold;
         }
-    </style>1463515.0814.76
+    </style>
 
 </head>
 
@@ -105,8 +117,8 @@
                                                
                                             </div> -->
     <div id="container">
-         <!--<div class="egroup"></div>
-        <div class="ogroup"></div>-->
+        <div class="egroup"></div>
+        <div class="ogroup"></div>
     </div>
 
     <!-- structura interna -->
@@ -237,7 +249,7 @@
 
                 //counterItem[counterItem.length - 1].innerHTML =  Ec +"e";
                 counterItem[counterItem.length - 1].style.color = "#0bc722";
-                 counterItem[counterItem.length - 1].style.backgroundColor = "rgba(0, 128, 0, 0.35)";
+                counterItem[counterItem.length - 1].style.backgroundColor = "#3dfaff3d";
                 counterItem[counterItem.length - 1].innerHTML = Ec;
 
 
@@ -273,7 +285,7 @@
 
                 //counterItem[counterItem.length - 1].innerHTML = Oc +"o";  
                 counterItem[counterItem.length - 1].style.color = "#0bc722";
-                 counterItem[counterItem.length - 1].style.backgroundColor = "rgba(0, 128, 0, 0.35)";
+                counterItem[counterItem.length - 1].style.backgroundColor = "#3dfaff3d";
 
                 counterItem[counterItem.length - 1].innerHTML = Oc;
 
