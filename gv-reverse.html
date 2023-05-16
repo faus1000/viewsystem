@@ -1,0 +1,298 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="main.js"></script> -->
+    <title>GVS Linear - EO V100</title>
+    <link rel="icon" type="image/x-icon" href="./images/favicon.png">
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: transparent;
+            border-radius: 0px;
+            background: #020d1c;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgba(131, 145, 155, 0.54);
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(131, 145, 155, 0.54);
+        }
+
+        body {
+            /* background-color: #a1d2ff;*/
+            background-color: #020d1c;
+            /*overflow: hidden;*/
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /*body:hover {
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }*/
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row-reverse;
+        }
+
+        .egroup {
+          /* background-color: rgba(0, 128, 0, 0.35);*/
+          background-color: rgba(219, 41, 41, 0.31);
+            color: #77ff88;
+            font-size: 20px;
+            width: 26px;
+            height: 26px;
+            border-radius: 4px 4px 0px 0px;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            /*margin: 0px 0px 4px 0px;*/ 
+            font-weight: bold;
+            border-bottom: 1px solid rgba(82, 229, 255, 0.24);
+        }
+ 
+        .ogroup {
+            background-color: rgba(219, 41, 41, 0.31);
+            color: #ff8080; 
+            width: 26px;
+            font-size: 20px;
+            height: 26px;
+            border-radius: 4px 4px 0px 0px;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            /*margin: 0px 0px 4px 0px;*/
+            font-weight: bold;
+            border-bottom: 1px solid rgba(82, 229, 255, 0.24);
+        }
+
+        
+        .enum1 {
+            color: #f34a4a;
+            padding: 0;
+            font-size: 20px;
+            /*font-family: sans-serif;*/
+            font-weight: bold;
+        }
+
+        .onum1 {
+            color: #f34a4a;
+            padding: 0;
+            font-size: 20px;
+           /* font-family: sans-serif;*/
+            font-weight: bold;
+        }
+    </style>1463515.0814.76
+
+</head>
+
+<body>
+    <!-- <div class="mainContainer">
+                                                <div class="linea"></div>
+                                               
+                                            </div> -->
+    <div id="container">
+         <!--<div class="egroup"></div>
+        <div class="ogroup"></div>-->
+    </div>
+
+    <!-- structura interna -->
+    <!--   
+                    <div class="egroup">
+                        <span class="etext">2e</span>
+                    </div>
+                    <div class="ogroup">
+                        <span class="otext">3o</span>
+                    </div>-->
+
+
+    <script>
+
+        var out = document.body;
+        // ==============================================================
+
+        // var arr1 = [];
+        // var arr2 = [];
+        // arr2[0] = 0;
+        // var listC = [];
+        var porcentList = [];
+        periods = 25;
+
+        var eCounter = 0;
+        var oCounter = 0;
+
+
+        var symbol = "R_100";
+        var decimals = 2;
+
+
+        var ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=1089');
+
+        ws.onopen = function (evt) {
+            ws.send(JSON.stringify({ ticks: symbol }));
+        };
+
+        var addOGroup = false;
+        var addEGroup = false;
+
+        ws.onmessage = function (msg) {
+            var data = JSON.parse(msg.data);
+
+            var digit = Number(data.tick.quote).toFixed(decimals).slice(-1);
+            var isScrolledToBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
+
+
+            if (digit % 2 === 0) {
+                var text = "O";
+                if (oCounter > 0) { // arr1.push(oCounter + text);
+                    AñadirGruposE(digit, 1);
+                    addEGroup = true
+
+                }
+                oCounter = 0;
+                eCounter += 1;
+
+            } else {
+                var text = "E";
+                if (eCounter > 0) { // arr1.push(eCounter + text);
+                    AñadirGruposO(digit, 1);
+                    addOGroup = true;
+
+                }
+                eCounter = 0;
+                oCounter += 1;
+            }
+            if (eCounter > 0) {
+                // var text = "E";
+                // arr2[0] = eCounter + text;
+                if (addEGroup) {
+                    addEGroup = false;
+                } else {
+                    AñadirDigitsE(digit, eCounter);
+
+                }
+
+                // console.log("Ecounter mayor a cero");
+            }
+            if (oCounter > 0) {
+                // var text = "O";
+                // arr2[0] = oCounter + text;
+                if (addOGroup) {
+                    addOGroup = false;
+                } else {
+                    AñadirDigitsO(digit, oCounter,);
+
+                }
+
+                // console.log("Ocounter mayor a cero");
+            }
+            // mostrar en lista este array
+            // listC = arr1 + "," + arr2;
+            // console.log("Groups: " + listC);
+            // var digitListView = document.getElementById("digitGroups");
+
+
+            // TODO:  your script goes here
+            // colors text 🟢🔵🔴
+
+            function AñadirGruposE(digito, Ec) { // var edigitText = document.createTextNode(Ec);
+                var edigitText = document.createTextNode("🟢");
+                var senum1 = document.createElement("span");
+                var enum1 = document.createTextNode(Ec);
+                senum1.setAttribute("class", "enum1");
+                senum1.appendChild(enum1);
+
+                var eGroup = document.createElement("div");
+                //var Etext = document.createElement("span");
+                // Etext.setAttribute("class", "etext");
+                //Etext.appendChild(edigitText);
+
+
+                eGroup.setAttribute('class', 'egroup');
+                // eGroup.appendChild(Etext);
+                eGroup.appendChild(senum1);
+
+                var container = document.getElementById("container");
+                container.appendChild(eGroup);
+
+
+            }
+
+            function AñadirDigitsE(digito, Ec) {
+
+                var counterItem = document.getElementsByClassName("egroup");
+
+                //counterItem[counterItem.length - 1].innerHTML =  Ec +"e";
+                counterItem[counterItem.length - 1].style.color = "#0bc722";
+                 counterItem[counterItem.length - 1].style.backgroundColor = "rgba(0, 128, 0, 0.35)";
+                counterItem[counterItem.length - 1].innerHTML = Ec;
+
+
+
+            }
+
+            function AñadirGruposO(digito, Oc,) { // var odigitText = document.createTextNode(Oc);
+                //  var odigitText = document.createTextNode("🔴");
+
+                var sonum1 = document.createElement("span");
+                var onum1 = document.createTextNode(Oc);
+                sonum1.setAttribute("class", "onum1");
+                sonum1.appendChild(onum1);
+
+                //var Otext = document.createElement("span");
+                //Otext.setAttribute("class", "otext");
+                //Otext.appendChild(odigitText);
+
+
+                var oGroup = document.createElement("div");
+                oGroup.setAttribute('class', 'ogroup');
+                //oGroup.appendChild(Otext);
+                oGroup.appendChild(sonum1);
+
+
+                var container = document.getElementById("container");
+                container.appendChild(oGroup);
+
+            }
+
+            function AñadirDigitsO(digito, Oc) {
+                var counterItem = document.getElementsByClassName("ogroup");
+
+                //counterItem[counterItem.length - 1].innerHTML = Oc +"o";  
+                counterItem[counterItem.length - 1].style.color = "#0bc722";
+                 counterItem[counterItem.length - 1].style.backgroundColor = "rgba(0, 128, 0, 0.35)";
+
+                counterItem[counterItem.length - 1].innerHTML = Oc;
+
+            }
+
+            if (isScrolledToBottom) {
+                //  out.scrollLeft = out.scrollWidth - out.clientWidth; 
+                out.scrollTop = out.scrollHeight + out.clientHeight;
+            } else {
+
+            }
+
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>
