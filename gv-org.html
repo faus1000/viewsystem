@@ -3,99 +3,98 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <script src="main.js"></script> -->
-    <title>GVS 2 colors - EO V100</title>
+    <title>GVS Linear - EO V100</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon.png">
     <style>
-             /* width */
-             ::-webkit-scrollbar {
-                width: 10px;
-            }
-    
-            /* Track */
-            ::-webkit-scrollbar-track {
-                box-shadow: transparent;
-                border-radius: 0px;
-                background: #020d1c;
-            }
-    
-            /* Handle */
-            ::-webkit-scrollbar-thumb {
-                background: rgba(131, 145, 155, 0.54);
-                border-radius: 10px;
-            }
-    
-            /* Handle on hover */
-            ::-webkit-scrollbar-thumb:hover {
-                background: rgba(131, 145, 155, 0.54);
-            }
-    
-            body {
-                /* background-color: #a1d2ff;*/
-                background-color: #020d1c;
-                /*overflow: hidden;*/
-                overflow-y: auto;
-                overflow-x: hidden;
-            }
-    
-            /*body:hover {
-                overflow-y: scroll;
-                overflow-x: hidden;
-            }*/
-            #container {
-                display: flex;
-                flex-wrap: wrap;
-            }
-    
-            .egroup {
-              /* background-color: rgba(0, 128, 0, 0.35);
-              background-color: rgba(219, 41, 41, 0.31);
-                color: #77ff88;*/
-                font-size: 20px;
-                width: 26px;
-                height: 26px;
-                border-radius: 4px 4px 0px 0px;
-                display: flex;
-                justify-content: center;
-                justify-items: center;
-                align-items: center;
-                /*margin: 0px 0px 4px 0px;*/ 
-                font-weight: bold;
-                border-bottom: 1px solid rgba(82, 229, 255, 0.24);
-            }
-     
-            .ogroup {
-                /*
-                background-color: rgba(219, 41, 41, 0.31);
-                color: #ff8080; */
-                width: 26px;
-                font-size: 20px;
-                height: 26px;
-                border-radius: 4px 4px 0px 0px;
-                display: flex;
-                justify-content: center;
-                justify-items: center;
-                align-items: center;
-                /*margin: 0px 0px 4px 0px;*/
-                font-weight: bold;
-                border-bottom: 1px solid rgba(82, 229, 255, 0.24);
-            }
-    
-            
-            .enum1 {
-               /* color: #f34a4a;*/
-                padding: 0;
-                font-size: 20px;
-                /*font-family: sans-serif;*/
-                font-weight: bold;
-            }
-    
-            .onum1 {
-               /* color: #f34a4a;*/
-                padding: 0;
-                font-size: 20px;
-               /* font-family: sans-serif;*/
-                font-weight: bold;
-            }
+        /* width */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: transparent;
+            border-radius: 0px;
+            background: #020d1c;
+        }
+
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: rgba(131, 145, 155, 0.54);
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(131, 145, 155, 0.54);
+        }
+
+        body {
+            /* background-color: #a1d2ff;*/
+            background-color: #020d1c;
+            /*overflow: hidden;*/
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        /*body:hover {
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }*/
+        #container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .egroup {
+          /* background-color: rgba(0, 128, 0, 0.35);*/
+          background-color: rgba(219, 41, 41, 0.31);
+            color: #77ff88;
+            font-size: 20px;
+            width: 26px;
+            height: 26px;
+            border-radius: 4px 4px 0px 0px;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            /*margin: 0px 0px 4px 0px;*/ 
+            font-weight: bold;
+            border-bottom: 1px solid rgba(82, 229, 255, 0.24);
+        }
+ 
+        .ogroup {
+            background-color: rgba(219, 41, 41, 0.31);
+            color: #ff8080; 
+            width: 26px;
+            font-size: 20px;
+            height: 26px;
+            border-radius: 4px 4px 0px 0px;
+            display: flex;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            /*margin: 0px 0px 4px 0px;*/
+            font-weight: bold;
+            border-bottom: 1px solid rgba(82, 229, 255, 0.24);
+        }
+
+        
+        .enum1 {
+            color: #f34a4a;
+            padding: 0;
+            font-size: 20px;
+            /*font-family: sans-serif;*/
+            font-weight: bold;
+        }
+
+        .onum1 {
+            color: #f34a4a;
+            padding: 0;
+            font-size: 20px;
+           /* font-family: sans-serif;*/
+            font-weight: bold;
+        }
     </style>
 
 </head>
@@ -194,7 +193,7 @@
                 if (addOGroup) {
                     addOGroup = false;
                 } else {
-                    AñadirDigitsO(digit, oCounter);
+                    AñadirDigitsO(digit, oCounter,);
 
                 }
 
@@ -216,9 +215,10 @@
                 senum1.setAttribute("class", "enum1");
                 senum1.appendChild(enum1);
 
-                var eGroup = document.createElement("div"); 
-                eGroup.style.color = "#42C539"; 
-                 eGroup.style.backgroundColor = "rgba(2, 109, 4)";
+                var eGroup = document.createElement("div");
+                //var Etext = document.createElement("span");
+                // Etext.setAttribute("class", "etext");
+                //Etext.appendChild(edigitText);
 
 
                 eGroup.setAttribute('class', 'egroup');
@@ -250,13 +250,18 @@
                 var sonum1 = document.createElement("span");
                 var onum1 = document.createTextNode(Oc);
                 sonum1.setAttribute("class", "onum1");
-                sonum1.appendChild(onum1); 
+                sonum1.appendChild(onum1);
+
+                //var Otext = document.createElement("span");
+                //Otext.setAttribute("class", "otext");
+                //Otext.appendChild(odigitText);
+
 
                 var oGroup = document.createElement("div");
                 oGroup.setAttribute('class', 'ogroup');
+                //oGroup.appendChild(Otext);
                 oGroup.appendChild(sonum1);
-                oGroup.style.color = "#FF5050"; 
-                oGroup.style.backgroundColor = "#8E282E";
+
 
                 var container = document.getElementById("container");
                 container.appendChild(oGroup);
@@ -265,18 +270,23 @@
 
             function AñadirDigitsO(digito, Oc) {
                 var counterItem = document.getElementsByClassName("ogroup");
-                counterItem[counterItem.length - 1].style.color = "#f34a4a";
-                counterItem[counterItem.length - 1].style.backgroundColor = "rgba(219, 41, 41, 0.31)";
+
+                //counterItem[counterItem.length - 1].innerHTML = Oc +"o";  
+                counterItem[counterItem.length - 1].style.color = "#0bc722";
+                 counterItem[counterItem.length - 1].style.backgroundColor = "rgba(0, 128, 0, 0.35)";
 
                 counterItem[counterItem.length - 1].innerHTML = Oc;
 
             }
 
             if (isScrolledToBottom) {
+                //  out.scrollLeft = out.scrollWidth - out.clientWidth; 
                 out.scrollTop = out.scrollHeight + out.clientHeight;
             } else {
 
             }
+
+
 
         }
 
